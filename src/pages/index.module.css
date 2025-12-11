@@ -1,8 +1,12 @@
 .hero {
+  padding: 4rem 0;
+  background: linear-gradient(180deg, rgba(13, 19, 33, 0.03), transparent);
+}
+
+.heroInner {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 2rem;
-  padding: 4rem 0;
 }
 
 .heroCopy {
@@ -139,21 +143,70 @@
   max-width: 760px;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
 .card {
   border: 1px solid var(--ifm-color-emphasis-200);
   border-radius: 14px;
   padding: 1.25rem;
-  background: var(--ifm-background-surface-color);
+  background: linear-gradient(180deg, rgba(13, 19, 33, 0.04), rgba(13, 19, 33, 0.02)), var(--ifm-background-surface-color);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .card h3 {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.1rem;
 }
 
 .card p {
   margin: 0;
   color: var(--ifm-color-emphasis-700);
+}
+
+.cardHead {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.chip {
+  align-self: flex-start;
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--ifm-color-primary);
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.cardLinks {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.cardLinks a {
+  text-decoration: none;
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.cardLinks a:hover {
+  text-decoration: underline;
 }
 
 .quickLinks {
@@ -180,7 +233,7 @@
 }
 
 @media screen and (max-width: 996px) {
-  .hero {
+  .heroInner {
     grid-template-columns: 1fr;
   }
 }
