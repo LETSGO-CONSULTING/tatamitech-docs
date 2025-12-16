@@ -10,7 +10,48 @@ Security hinges on two invariants: **every request is tenant-scoped**, and **eve
 
 - **JWT:** Issued on login, signed with `JWT_SECRET`, contains `sub` (user ID), `tenantId`, `role`, and expiration.
 - **Transport:** Bearer token in `Authorization` header; never accept tokens via query params.
-- **Token invalidation:** Short-lived access tokens; refresh strategy can be layered using rotating refresh tokens or re-login.
+- **Token invalidation:** Short-lived access tokens. For more details, see the [Refresh Token Flow](./refresh-token.md).
+
+### Login Request
+
+`POST /api/auth/login`
+
+```json
+{
+  "email": "sensei@demodojo.com",
+  "password": "password123",
+  "tenantSlug": "demo-dojo"
+}
+```
+
+### Login Response
+
+A `refreshToken` is set as an `httpOnly` cookie.
+
+```json
+{
+  "accessToken": "...",
+  "user": {
+    "id": "...",
+    "email": "sensei@demodojo.com",
+    "role": "admin"
+  }
+}
+```
+
+### Refresh Request
+
+`POST /api/auth/refresh`
+
+The browser automatically sends the `refreshToken` cookie.
+
+### Refresh Response
+
+```json
+{
+  "accessToken": "..."
+}
+```
 
 ### Sample middleware shape
 

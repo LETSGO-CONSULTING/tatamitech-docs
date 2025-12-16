@@ -49,6 +49,8 @@ const sidebars: SidebarsConfig = {
         'backend/overview',
         'backend/auth-security',
         'backend/qr-attendance',
+        'backend/database-seeding',
+        'backend/refresh-token',
       ],
     },
     {
